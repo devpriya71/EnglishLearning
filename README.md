@@ -57,3 +57,6 @@ Since this is frontend-only, you can:
 1. Clone the repo
    ```bash
    git clone https://github.com/your-username/english-learning-app.git
+
+2. 📊 [View Project Presentation (PDF)]
+
