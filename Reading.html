@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .accordion-header {
+            background-color: #FFB6C1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 p-6">
+    <nav>
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-6 border-b-2">
+            <a class="font-sans font-bold text-red-300 text-3xl" href="EnglishLearning.html">
+                English Learning Application
+            </a>
+            <div class="flex md:hidden">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" type="button">
+                    &#9776; <!-- Unicode character for hamburger icon -->
+                </button>
+            </div>
+            <!-- Navigation Links -->
+            <ul id="navbar-links" class="hidden md:flex space-x-8 text-black">
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="EnglishLearning.html">Home</a>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="quiz.html">Quiz</a>
+                </li>
+                <!-- Practice Dropdown -->
+                <li class="relative">
+                    <button id="practice-button" class="hover:text-[#FFB6C1] text-xl">
+                        Practice
+                        <svg class="fill-current h-4 w-4 inline ml-2" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="dropdown-menu" class="hidden absolute left-0 mt-2 bg-white shadow-md rounded w-48 z-10">
+                        <a href="Reading.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Reading</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Listening</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Speaking</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="#">About Us</a>
+                </li>
+            </ul>
+            <!-- Schedule a Meeting Button -->
+            <button
+                class="hidden md:block bg-[#FFB6C1] p-4 text-white h-16 w-44 text-base rounded-t-xl rounded-bl-xl hover:bg-opacity-50">Schedule
+                a Meeting
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by Default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-100 p-4">
+            <ul class="flex flex-col space-y-4 text-black">
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="EnglishLearning.html">Home</a>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="quiz.html">Quiz</a>
+                </li>
+                <li class="relative">
+                    <button id="practice-button" class="hover:text-[#FFB6C1] text-xl focus:outline-none">
+                        Practice
+                        <svg class="fill-current h-4 w-4 inline ml-2" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="dropdown-menu" class="hidden absolute left-0 mt-2 bg-white shadow-md rounded w-48 z-10">
+                        <a href="Reading.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Reading</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Listening</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Speaking</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="#">About Us</a>
+                </li>
+                <li>
+                    <button class="bg-[#FFB6C1] p-4 text-white rounded-t-xl rounded-bl-xl hover:bg-opacity-50">
+                        Schedule a Meeting
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- JavaScript for Dropdown Functionality -->
+        <script>
+            const practiceButton = document.getElementById('practice-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+
+            practiceButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (!practiceButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        </script>
+    </nav>
+
+    <!-- JavaScript for Toggle Functionality -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <div class="max-w-3xl mx-auto mt-10">
+        <h1 class="text-3xl font-bold mb-6 text-center">Reading Practice Topics</h1>
+
+        <!-- Accordion Item 1 -->
+        <div class="mb-2">
+            <button id="accordion-button-1"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 1: Environmental Issues</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-1" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Our planet faces a multitude of environmental challenges that demand urgent attention. Climate
+                    change, driven by human activities and greenhouse gas emissions, is causing rising temperatures,
+                    extreme weather events, and sea-level rise, threatening communities and ecosystems worldwide.
+                    Pollution, in its various forms – air, water, and land – contaminates our natural resources, posing
+                    significant risks to human health and the environment. Deforestation, the clearing of forests for
+                    agriculture, urbanization, and other purposes, disrupts vital ecosystems, reduces biodiversity, and
+                    contributes to climate change. These interconnected issues require global cooperation and
+                    sustainable practices to ensure a healthy planet for future generations. Furthermore, the growing
+                    concern over biodiversity loss highlights the urgent need to conserve and protect the diverse
+                    species that make up our planet's ecosystems. The decline in the number and variety of species,
+                    driven by habitat destruction, pollution, and climate change, is a serious threat to the health and
+                    stability of the natural world, underscoring the importance of conservation efforts and sustainable
+                    practices to ensure a thriving planet for all. Finally, the increasing scarcity of clean, fresh
+                    water presents another critical challenge, driven by overuse, pollution, and climate change,
+                    threatening communities and ecosystems alike and underscoring the importance of responsible water
+                    management practices to ensure a sustainable water supply for future generations.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div class="mb-2">
+            <button id="accordion-button-2"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 2: Technology Advancements</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-2" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>The rapid pace of technological advancement continues to reshape nearly every facet of modern life.
+                    Artificial intelligence (AI) is revolutionizing industries from healthcare to finance, with machine
+                    learning algorithms powering everything from personalized recommendations to autonomous vehicles.
+                    Robotics is transforming manufacturing, logistics, and even surgery, with robots capable of
+                    performing tasks with greater precision and efficiency than ever before. Biotechnology is yielding
+                    breakthroughs in medicine, agriculture, and environmental science, offering new tools for diagnosing
+                    and treating diseases, improving crop yields, and remediating pollution. Nanotechnology is pushing
+                    the boundaries of materials science, electronics, and medicine, promising revolutionary advancements
+                    in fields ranging from energy storage to drug delivery. Renewable energy technologies, such as
+                    solar, wind, and geothermal, are becoming increasingly affordable and efficient, offering a pathway
+                    to a cleaner, more sustainable energy future, essential for combating climate change and securing
+                    long-term energy supplies for the planet. Virtual and augmented reality technologies are changing
+                    the ways we communicate, work, and experience the world, offering immersive and interactive
+                    experiences that blur the lines between the digital and physical realms, revolutionizing industries
+                    such as gaming, training, education, and communication.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div class="mb-2">
+            <button id="accordion-button-3"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 3: Health and Wellness</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-3" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Achieving optimal health and wellness requires a holistic approach that encompasses nutrition,
+                    exercise, mental health, and mindful lifestyle choices. A balanced diet, rich in essential
+                    nutrients, provides the fuel our bodies need to function optimally, while regular physical activity
+                    strengthens our cardiovascular system, improves our mood, and helps maintain a healthy weight.
+                    Mental health is equally important, and managing stress, practicing mindfulness, and seeking
+                    professional help when needed are essential for emotional well-being. Making informed lifestyle
+                    choices, such as prioritizing sleep, limiting alcohol consumption, and avoiding smoking, can further
+                    enhance our overall health and quality of life. Moreover, practices such as mindfulness and
+                    meditation are gaining recognition for their ability to reduce stress, improve focus, and enhance
+                    overall well-being. Integrating these practices into daily life can have profound effects on both
+                    physical and mental health, promoting a sense of calm, clarity, and resilience in the face of life's
+                    challenges. By embracing a holistic approach that encompasses nutrition, exercise, mental health,
+                    and mindful lifestyle choices, we can empower ourselves to live healthier, happier, and more
+                    fulfilling lives.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 4 -->
+        <div class="mb-2">
+            <button id="accordion-button-4"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 4: The Importance of Education</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-4" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Education is a cornerstone of personal and societal progress, empowering individuals with knowledge,
+                    skills, and critical thinking abilities that are essential for success in today's complex world. It
+                    opens doors to new opportunities, fosters innovation and creativity, and promotes informed
+                    decision-making. A well-rounded education not only equips individuals with the tools they need to
+                    pursue their dreams but also contributes to a more engaged, informed, and prosperous society.
+                    Furthermore, the benefits of education extend beyond individual achievements, playing a pivotal role
+                    in fostering social cohesion, reducing inequality, and promoting economic growth. By investing in
+                    education, we invest in a brighter future for ourselves and generations to come.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 5 -->
+        <div class="mb-2">
+            <button id="accordion-button-5"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 5: The Power of communication</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-5" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Effective communication is a fundamental skill that underlies success in all aspects of life, from
+                    personal relationships to professional endeavors. It involves not only the ability to articulate
+                    one's thoughts and ideas clearly but also the capacity to listen actively, empathize with others,
+                    and navigate diverse perspectives. Strong communication skills foster understanding, build trust,
+                    and facilitate collaboration, enabling individuals and teams to achieve common goals. In an
+                    increasingly interconnected world, the power of effective communication is more critical than ever,
+                    playing a pivotal role in resolving conflicts, building bridges, and creating a more inclusive and
+                    harmonious global community.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 6 -->
+        <div class="mb-2">
+            <button id="accordion-button-6"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 6: The Importance of Travel</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-6" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Travel offers a transformative experience that broadens our horizons, challenges our perspectives,
+                    and fosters a deeper understanding of the world around us. It allows us to immerse ourselves in
+                    different cultures, encounter new ideas, and appreciate the diversity of human experience. Travel
+                    also provides opportunities for personal growth, self-discovery, and the development of valuable
+                    skills such as adaptability, problem-solving, and cross-cultural communication. Whether exploring
+                    ancient ruins, hiking through breathtaking landscapes, or connecting with locals in bustling
+                    markets, travel enriches our lives in countless ways, expanding our knowledge, empathy, and
+                    appreciation for the beauty and complexity of our planet.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 7 -->
+        <div class="mb-2">
+            <button id="accordion-button-7"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 7: The Value of Friendship</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-7" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>Friendship is an essential aspect of human connection, providing us with companionship, support, and
+                    a sense of belonging. True friends offer us unwavering encouragement, celebrate our successes, and
+                    offer a shoulder to lean on during challenging times. They provide us with a safe space to be
+                    ourselves, share our joys and sorrows, and grow as individuals. The value of friendship extends
+                    beyond emotional support, fostering empathy, compassion, and a deeper understanding of others.
+                    Cultivating strong and meaningful friendships enriches our lives, strengthens our resilience, and
+                    contributes to a happier and more fulfilling existence.</p>
+            </div>
+        </div>
+
+        <!-- Accordion Item 8 -->
+        <div class="mb-2">
+            <button id="accordion-button-8"
+                class="accordion-header w-full text-left p-4 rounded-md focus:outline-none transition duration-200 ease-in-out">
+                <span class="font-semibold">Topic 8: The Importance of Lifelong Learning</span>
+                <svg class="w-5 h-5 inline float-right transform rotate-0 transition-transform duration-200 ease-in-out"
+                    id="icon-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M10 12l4-4H6l4 4z" />
+                </svg>
+            </button>
+            <div id="accordion-content-8" class="hidden p-4 bg-white rounded-md shadow-md">
+                <p>In today's rapidly changing world, the importance of lifelong learning cannot be overstated.
+                    Embracing a mindset of continuous growth and exploration allows us to adapt to new challenges,
+                    acquire new skills, and remain relevant in an increasingly competitive job market. Lifelong learning
+                    fosters intellectual curiosity, enhances our problem-solving abilities, and promotes personal
+                    fulfillment. Whether through formal education, online courses, or self-directed study, the pursuit
+                    of knowledge empowers us to achieve our goals, make a positive impact on the world, and live a more
+                    meaningful and enriching life. It also means staying curious, reading regularly and following
+                    scientific developments and achievements to develop and maintain awareness on modern topics and
+                    discoveries.</p>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- JavaScript for Accordion Functionality -->
+    <script>
+        document.querySelectorAll('.accordion-header').forEach((button) => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+
+                // Close all other accordion items
+                document.querySelectorAll('.accordion-header').forEach((otherButton) => {
+                    if (otherButton !== button) {
+                        const otherContent = otherButton.nextElementSibling;
+                        const otherIcon = otherButton.querySelector('svg');
+
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-[180deg]');
+                    }
+                });
+
+                // Toggle visibility of the current accordion item
+                content.classList.toggle('hidden');
+
+                // Rotate icon of the current accordion item
+                icon.classList.toggle('rotate-[180deg]');
+            });
+        });
+    </script>
+    <div>
+        <!-- Footer One -->
+        <footer class="bg-[#FFB6C1] mt-10">
+            <div class="mx-auto max-w-7xl px-5 pb-10 pt-10 lg:pb-24 lg:pt-14">
+                <div
+                    class="flex flex-col items-center justify-center space-y-5 pb-8 lg:flex-row lg:justify-between lg:space-y-0 lg:space-x-12 lg:pb-14">
+                    <a class="block" href="#"></a>
+                    <div class=" text-3xl font-bold text-white opacity-90">English
+                        Learning Application
+                    </div>
+                    </a>
+                    <div class="flex flex-col items-center gap-4 text-white opacity-90 sm:flex-row sm:gap-8 lg:gap-14">
+                        <a href="#" class="lg:hover:text-black">Features</a>
+                        <a href="#" class="lg:hover:text-black">About</a>
+                        <a href="#" class="lg:hover:text-black">Pricing</a>
+                        <a href="#" class="lg:hover:text-black">Blog</a>
+                        <a href="#" class="lg:hover:text-black">Get
+                            In Touch</a>
+                        <a href="#" class="lg:hover:text-black">Community Forum</a>
+                        <a href="#" class="lg:hover:text-black">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Two -->
+        <footer class="bg-[#FFB6C1] text-white mt-12">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2023 Learn English. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

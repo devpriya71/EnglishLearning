@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <nav>
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-6 border-b-2">
+            <a class="font-sans font-bold text-red-300 text-3xl" href="EnglishLearning.html">
+                English Learning Application
+            </a>
+            <div class="flex md:hidden">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" type="button">
+                    &#9776; <!-- Unicode character for hamburger icon -->
+                </button>
+            </div>
+            <!-- Navigation Links -->
+            <ul id="navbar-links" class="hidden md:flex space-x-8 text-black">
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="EnglishLearning.html">Home</a>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="quiz.html">Quiz</a>
+                </li>
+                <!-- Practice Dropdown -->
+                <li class="relative">
+                    <button id="practice-button" class="hover:text-[#FFB6C1] text-xl">
+                        Practice
+                        <svg class="fill-current h-4 w-4 inline ml-2" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="dropdown-menu" class="hidden absolute left-0 mt-2 bg-white shadow-md rounded w-48 z-10">
+                        <a href="Reading.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Reading</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Listening</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Speaking</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="#">About Us</a>
+                </li>
+            </ul>
+            <!-- Schedule a Meeting Button -->
+            <button
+                class="hidden md:block bg-[#FFB6C1] p-4 text-white h-16 w-44 text-base rounded-t-xl rounded-bl-xl hover:bg-opacity-50">Schedule
+                a Meeting
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by Default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-100 p-4">
+            <ul class="flex flex-col space-y-4 text-black">
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="EnglishLearning.html">Home</a>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="quiz.html">Quiz</a>
+                </li>
+                <li class="relative">
+                    <button id="practice-button" class="hover:text-[#FFB6C1] text-xl focus:outline-none">
+                        Practice
+                        <svg class="fill-current h-4 w-4 inline ml-2" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="dropdown-menu" class="hidden absolute left-0 mt-2 bg-white shadow-md rounded w-48 z-10">
+                        <a href="Reading.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Reading</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Listening</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Speaking</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="hover:text-[#FFB6C1] text-xl" href="#">About Us</a>
+                </li>
+                <li>
+                    <button class="bg-[#FFB6C1] p-4 text-white rounded-t-xl rounded-bl-xl hover:bg-opacity-50">
+                        Schedule a Meeting
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- JavaScript for Dropdown Functionality -->
+        <script>
+            const practiceButton = document.getElementById('practice-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+
+            practiceButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (!practiceButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        </script>
+    </nav>
+
+    <!-- JavaScript for Toggle Functionality -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-[#FFB6C1] mb-4">Welcome to Learn English</h2>
+            <p class="text-gray-700">Take the quiz below
+                to find out your current English level!
+            </p>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-[#FFB6C1] mb-4">English Level Quiz</h2>
+            <form id="quiz-form">
+                <!-- Question 1 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">1. What is the past tense of "go"?</p>
+                    <div class="space-y-2">
+                        <!-- Radio buttons for options -->
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="A" class="mr-2">
+                            Went
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="B" class="mr-2">
+                            Gone
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="C" class="mr-2">
+                            Going
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">2. Choose the correct sentence:</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="A" class="mr-2">
+                            She don't like apples.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="B" class="mr-2">
+                            She doesn't like apples.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="C" class="mr-2">
+                            She didn't likes apples.
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">3. What is the synonym of "happy"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="A" class="mr-2">
+                            Sad
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="B" class="mr-2">
+                            Joyful
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="C" class="mr-2">
+                            Angry
+                        </label>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">4. Which is the correct way to write the plural of
+                        "child"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="A" class="mr-2">
+                            Childs
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="B" class="mr-2">
+                            Children
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="C" class="mr-2">
+                            Childes
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">5. Choose the correct sentence:</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="A" class="mr-2">
+                            I am going to the store.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="B" class="mr-2">
+                            I going to the store.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="C" class="mr-2">
+                            I be going to the store.
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">6. What is the opposite of "big"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="A" class="mr-2">
+                            Tall
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="B" class="mr-2">
+                            Small
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="C" class="mr-2">
+                            Long
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">7. Which word is a verb?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="A" class="mr-2">
+                            Cat
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="B" class="mr-2">
+                            Run
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="C" class="mr-2">
+                            House
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">8. Choose the correct article: I have ____ apple.</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="A" class="mr-2">
+                            a
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="B" class="mr-2">
+                            an
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="C" class="mr-2">
+                            the
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">9. What is the past participle of "eat"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q9" value="A" class="mr-2">
+                            Ate
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q9" value="B" class="mr-2">
+                            Eaten
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q9" value="C" class="mr-2">
+                            Eating
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">10. Select the correct preposition: The book is ____ the
+                        table.</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q10" value="A" class="mr-2">
+                            in
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q10" value="B" class="mr-2">
+                            on
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q10" value="C" class="mr-2">
+                            at
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">11. Which sentence is in the future tense?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q11" value="A" class="mr-2">
+                            I am eating dinner.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q11" value="B" class="mr-2">
+                            I ate dinner.
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q11" value="C" class="mr-2">
+                            I will eat dinner.
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">12. What is the adverb in this sentence: He runs
+                        quickly.</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q12" value="A" class="mr-2">
+                            He
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q12" value="B" class="mr-2">
+                            Runs
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q12" value="C" class="mr-2">
+                            Quickly
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="mb-6">
+                    <p class="text-gray-700 font-semibold mb-2">13. Choose the correct pronoun: This is ____ book.</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q13" value="A" class="mr-2">
+                            I
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q13" value="B" class="mr-2">
+                            My
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q13" value="C" class="mr-2">
+                            Me
+                        </label>
+                    </div>
+                </div>
+
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="bg-[#FFB6C1] text-white px-6 py-2 rounded-lg hover:bg-[#FFB6C1] transition duration-300">
+                    Submit Quiz
+                </button>
+            </form>
+
+            <!-- Quiz Result -->
+            <div id="quiz-result" class="mt-6 hidden">
+                <h3 class="text-xl font-bold text-[#FFB6C1] mb-2">Your English Level:</h3>
+                <p id="result-text" class="text-gray-700 font-semibold"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript for Quiz -->
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Correct Answers
+            const answers = {
+                q1: 'A',
+                q2: 'B',
+                q3: 'B',
+                q4: 'B',
+                q5: 'A',
+                q6: 'B',
+                q7: 'B',
+                q8: 'B',
+                q9: 'B',
+                q10: 'B',
+                q11: 'C',
+                q12: 'C',
+                q13: 'B'
+            };
+
+            // User Answers
+            const userAnswers = {
+                q1: document.querySelector('input[name="q1"]:checked')?.value,
+                q2: document.querySelector('input[name="q2"]:checked')?.value,
+                q3: document.querySelector('input[name="q3"]:checked')?.value,
+                q4: document.querySelector('input[name="q4"]:checked')?.value,
+                q5: document.querySelector('input[name="q5"]:checked')?.value,
+                q6: document.querySelector('input[name="q6"]:checked')?.value,
+                q7: document.querySelector('input[name="q7"]:checked')?.value,
+                q8: document.querySelector('input[name="q8"]:checked')?.value,
+                q9: document.querySelector('input[name="q9"]:checked')?.value,
+                q10: document.querySelector('input[name="q10"]:checked')?.value,
+                q11: document.querySelector('input[name="q11"]:checked')?.value,
+                q12: document.querySelector('input[name="q12"]:checked')?.value,
+                q13: document.querySelector('input[name="q13"]:checked')?.value
+            };
+
+            // Calculate Score
+            let score = 0;
+            for (const key in answers) {
+                if (userAnswers[key] === answers[key]) {
+                    score++;
+                }
+            }
+
+            // Display Result
+            const resultText = document.getElementById('result-text');
+            const quizResult = document.getElementById('quiz-result');
+
+            if (score >= 11) {
+                resultText.innerHTML = 'Advanced! You have a strong command of English.';
+            } else if (score >= 7) {
+                resultText.innerHTML = 'Intermediate! You have a good understanding of English.';
+            } else if (score >= 4) {
+                resultText.innerHTML = 'Beginner! Keep practicing to improve your skills.';
+            } else {
+                resultText.innerHTML = 'Starter! You are just beginning your English journey.';
+            }
+
+            quizResult.classList.remove('hidden');
+        });
+
+    </script>
+    <div>
+        <!-- Footer One -->
+        <footer class="bg-[#FFB6C1] mt-10">
+            <div class="mx-auto max-w-7xl pb-10 pt-10 lg:pb-24 lg:pt-14">
+                <div
+                    class="flex flex-col items-center justify-center space-y-5 pb-8 lg:flex-row lg:justify-between lg:space-y-0 lg:pb-14">
+                    <a class="block" href="#"></a>
+                    <div class=" text-3xl font-bold text-white opacity-90">English
+                        Learning Application
+                    </div>
+                    </a>
+                    <div class="flex flex-col items-center gap-4 text-white opacity-90 sm:flex-row sm:gap-8 lg:gap-14">
+                        <a href="#" class="lg:hover:text-black">Features</a>
+                        <a href="#" class="lg:hover:text-black">About</a>
+                        <a href="#" class="lg:hover:text-black">Pricing</a>
+                        <a href="#" class="lg:hover:text-black">Blog</a>
+                        <a href="#" class="lg:hover:text-black">Get
+                            In Touch</a>
+                        <a href="#" class="lg:hover:text-black">Community Forum</a>
+                        <a href="#" class="lg:hover:text-black">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Two -->
+        <footer class="bg-[#FFB6C1] text-white">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2023 Learn English. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
